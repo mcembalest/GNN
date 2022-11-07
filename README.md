@@ -13,10 +13,16 @@ Create a new conda environment with python version 3.10:
 `conda create --name GNN_ENV python=3.10`
 
 You can now setup the environment for this project by running the included shell script:
+
+1. Activate the new environment:
+
 `conda activate GNN_ENV`
+
+2a. Install libraries into the new environment:
+
 `zsh setup_environment.zsh`
 
-Alternatively, you can run the two lines that are in the shell script directly:
+2b. If step 2a worked, ignore step 2b. If step 2a did not work, you can run the two lines that are in `setup_environment.zsh` directly:
 
 `pip install -r requirements.txt`
 
