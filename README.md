@@ -18,11 +18,11 @@ You can now setup the environment for this project by running the included shell
 
 `conda activate GNN_ENV`
 
-2a. Install libraries into the new environment:
+2. Install libraries into the new environment:
 
 `zsh setup_environment.zsh`
 
-2b. If step 2a worked, ignore step 2b. If step 2a did not work, you can run the two lines that are in `setup_environment.zsh` directly:
+3. If step 2 worked, ignore step 3. If step 2 did not work, you can run the two lines that are in `setup_environment.zsh` directly:
 
 `pip install -r requirements.txt`
 
