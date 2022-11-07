@@ -1,12 +1,12 @@
 # GNN Starter Code
 
-## Step 1: Download
+## Download
 
 Download this project from your command line by running
 
 `git clone https://github.com/mcembalest/GNN.git`
 
-## Step 2: Enrivonment
+## Enrivonment
 
 Create a new conda environment with python version 3.10:
 
@@ -28,7 +28,7 @@ You can now setup the environment for this project by running the included shell
 
     `pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cpu.html`
 
-## Step 3: Notebook
+## Airports Example
 
 Run the notebook `airports.ipynb` to load a Pytorch-Geomtetric graph dataset of US airports. 
 
