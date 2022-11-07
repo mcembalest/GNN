@@ -16,17 +16,17 @@ You can now setup the environment for this project by running the included shell
 
 1. Activate the new environment:
 
-`conda activate GNN_ENV`
+    `conda activate GNN_ENV`
 
 2. Install libraries into the new environment:
 
-`zsh setup_environment.zsh`
+    `zsh setup_environment.zsh`
 
 3. If step 2 worked, ignore step 3. If step 2 did not work, you can run the two lines that are in `setup_environment.zsh` directly:
 
-`pip install -r requirements.txt`
+    `pip install -r requirements.txt`
 
-`pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cpu.html`
+    `pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cpu.html`
 
 ## Step 3: Notebook
 
