@@ -1,0 +1,9 @@
+numpy
+pandas
+jupyter
+scipy==1.9.1
+sklearn
+matplotlib
+plotly
+networkx
+torch==1.12
