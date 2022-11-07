@@ -19,6 +19,7 @@ You can now setup the environment for this project by running the included shell
 Alternatively, you can run the two lines that are in the shell script directly:
 
 `pip install -r requirements.txt`
+
 `pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cpu.html`
 
 ## Step 3: Notebook
