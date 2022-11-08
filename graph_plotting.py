@@ -1,14 +1,5 @@
-## Standard libraries
-import os
-import json
-import math
 import numpy as np
-import time
 import pandas as pd
-import sklearn
-from sklearn.linear_model import LogisticRegression
-from urllib.request import urlopen
-import json
 import matplotlib.pyplot as plt
 
 # Plotly
@@ -22,15 +13,30 @@ import networkx as nx
 import torch
 
 def visualize_graph(ax, G, color=None, labels=False, title=None, layout=lambda G : nx.spring_layout(G, seed=42)):
+    '''
+    ax: Matplotlib axis
+    G: networkX graph
+    color: str
+    labels: whether or not to display the node labels
+    layout: networkX layout function (default is networkX.spring_layout)
+    '''
     ax.set_xticks([])
     ax.set_yticks([])
-    node_color = 'white'
+    node_color = 'blue'
     if color is not None: node_color = color
     nx.draw_networkx(G, pos=layout(G), with_labels=labels,
                      node_color=node_color, cmap="Set2", node_size=100, ax=ax)
     if title: ax.set_title(title)
 
 def visualize_embedding(ax, h, color, epoch=None, loss=None, title=''):
+    '''
+    ax: Matplotlib axis
+    h: node embeddings
+    color: str
+    epoch: epoch # during training
+    loss: loss value of embeddings during training
+    title: str
+    '''
     ax.set_xticks([])
     ax.set_yticks([])
     h = h.detach().cpu().numpy()
@@ -41,6 +47,10 @@ def visualize_embedding(ax, h, color, epoch=None, loss=None, title=''):
     ax.set_ylabel('embedding dim 2')
         
 def visualize_model_embedding_spaces(models, modelnames):
+    '''
+    models: List[torch models]
+    modelnames: List[str]
+    '''
     fig, ax = plt.subplots(1, len(models), figsize=(len(models)*4,4))
     x_min, x_max = -1, 1
     y_min, y_max = -1, 1
@@ -62,6 +72,11 @@ def visualize_model_embedding_spaces(models, modelnames):
     plt.show()    
         
 def plot_training_results(losses, acc, modelnames):
+    '''
+    losses: Dict[str -> List[float]], loss of each model during training
+    acc: Dict[str -> List[float]], accuracy of each model during training
+    modelnames: List[str]
+    '''
     assert list(losses.keys()) == modelnames and list(acc.keys()) == modelnames
     n_models = len(modelnames)
     fig, ax = plt.subplots(2, n_models, figsize=(3*n_models,6))
@@ -97,6 +112,11 @@ def plot_training_results(losses, acc, modelnames):
     plt.tight_layout()
     
 def plot_graph_geography(graph, geodf, title=None):
+    '''
+    graph: networkX graph
+    geodf: pandas DataFrame with lat/lon coordinates of nodes in graph
+        the index values of geodf should match the node values of graph
+    '''
     
     # gets latitude & longitude coords for each node by ID from geodf
     geo_df_row = lambda i : geodf.loc[geodf.index==i]
