@@ -1,5 +1,13 @@
 # GNN Starter Code
 
+This repo loads a dataset of airports as a simple demonstration of how graph neural networks can encode useful information to model data that naturally has a network shape:
+
+![Airports dataset](img/airports.png "Airports dataset")
+
+We show how to visualize the embeddings of the final layer to compare how effectively models are separating the data according to the classification task at hand
+
+![GNN Embeddings](img/gnn_embeddings.png "GNN Embeddings")
+
 ## Download
 
 Download this project from your command line by running
@@ -10,13 +18,13 @@ Download this project from your command line by running
 
 Create a new conda environment with python version 3.10:
 
-`conda create --name GNN_ENV python=3.10`
+`conda create --name gnn-demo python=3.10`
 
 You can now setup the environment for this project by running the included shell script:
 
 1. Activate the new environment:
 
-    `conda activate GNN_ENV`
+    `conda activate gnn-demo`
 
 2. Install libraries into the new environment:
 
