@@ -1,30 +1,38 @@
 # GNN Starter Code
 
-This repo loads a dataset of airports as a simple demonstration of how graph neural networks can encode useful information to model data that naturally has a network shape:
+Run notebook `airports.ipynb` to view an example graph dataset and train graph neural networks to model the data (comparing against a baseline logistic regression model)
+
+## Airports Data
+
+Graphs like the map of US airports contain useful information when modeling data with a network shape:
 
 ![Airports dataset](img/airports.png "Airports dataset")
 
-We show how to visualize the embeddings of the final layer to compare how effectively models are separating the data according to the classification task at hand
+Each node in the graph is an airport, and each edge indicates the existence of a flight between the airports.
 
-![GNN Embeddings](img/gnn_embeddings.png "GNN Embeddings")
+Each airport in this dataset has a label representing its activity level (AKA how many passengers the airport gets each year, relative to other airports. The label 0 means top 25% of passenger activity, and the label 3 means bottom 25% of passenger activity, etc).
 
-## Download
+## Graph Neural Network
+
+Our graph neural network encodes each airport in the network into a 2d vector, which is then used to classify the network's activity level. We show how to visualize the embeddings of the final layer during training to qualitatively evaluate how the models learn to classify the data.
+
+![GNN Embeddings](img/trajectories.gif "Trajectory of GNN 2d node embeddings during training")
+
+## Setup
 
 Download this project from your command line by running
 
 `git clone https://github.com/mcembalest/GNN.git`
 
-## Enrivonment
-
 Create a new conda environment with python version 3.10:
 
-`conda create --name gnn-demo python=3.10`
+`conda create -n <envname> python=3.10`
 
 You can now setup the environment for this project by running the included shell script:
 
 1. Activate the new environment:
 
-    `conda activate gnn-demo`
+    `conda activate <envname>`
 
 2. Install libraries into the new environment:
 
@@ -35,13 +43,3 @@ You can now setup the environment for this project by running the included shell
     `pip install -r requirements.txt`
 
     `pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cpu.html`
-
-## Airports Example
-
-Run the notebook `airports.ipynb` to load a Pytorch-Geomtetric graph dataset of US airports. 
-
-Each node is an airport, and each edge indicates the existence of a flight between the airports.
-
-Each node is given a label indicating which quartile of passenger activity the airport has (label==0 means top 25% of passenger activity, label==3 means bottom 25% of passenger activity).
-
-This notebook compares two methods of predicting the activity label of each airport: a baseline logistic regression model vs graph neural networks.
