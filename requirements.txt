@@ -2,7 +2,7 @@ numpy
 pandas
 jupyter
 scipy==1.9.1
-sklearn
+scikit-learn
 matplotlib
 plotly
 networkx
