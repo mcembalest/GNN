@@ -14,23 +14,23 @@ The only data available as a predictor is the graph of airport connectivity - th
 
 Each airport is given the label 0, 1, 2, or 3, representing its activity level (label 0 is highest activity, label 3 is lowest activity).
 
-To evaluate against a baseline model, we train a logistic regression classifier to predict the label for each node using each node's # of neighbors as the only feature (the # of neighbors of an airport is the number of airports one direct flight away). We can only get around 50% accuracy with this baseline since there are plenty of airports that deviate from the general trend of more connected airports, more passengers.
+To evaluate against a comparable baseline model (random guessing would get 25% accuracy), I trained a logistic regression classifier to predict the label for each node using each node's # of neighbors as the only feature (the # of neighbors of an airport is the number of airports one direct flight away). I can only get around 50% accuracy with this baseline since there are plenty of airports that deviate from the general trend of more connected airports, more passenger activity.
 
 ![Logistic Regression baseline](img/logreg.png "Logistic Regression baseline")
 
 ## GNN
 
-We use graph convolutions to encode nodes into 2d embedding vectors, which are then used to classify each node.
+GNNs receive graph data (nodes & edges) as inputs. They learn the same kinds of flexible representations and make the same kinds of regression & classification predictions that other neural networks make.
 
-Our models output the node embeddings in addition to the node classifications which we use for visualization.
-
-We test two different convolution types available as PyTorch Geometric modules: `GCNConv` and `GraphSAGE`. We have found that `GraphSAGE` is able to beat the baseline whereas `GCNConv` is not yet observed to have done so. Additionally, we believe there are qualitative differences in the learning trajectories visualized below that seem to suggest `GraphSAGE` is a more efficient learner of this data than `GCNConv`.
+For the forward function I applied two rounds of graph convolution to encode nodes into 2d embedding vectors, which are then used to classify each node. The GNNs output the node embeddings in addition to the node classifications which I use for visualization.
 
 ![GNN Forward Function](img/gnn_forward.png "GNN Forward Function")
 
+I tested two different types of convolution layers available as PyTorch Geometric modules: `GCNConv` and `GraphSAGE`. I saw `GraphSAGE` is able to beat the logistic regression baseline but `GCNConv` hasn't yet. I think there are some qualitative differences in their learning trajectories that seem to suggest `GraphSAGE` is a more efficient learner of this data than `GCNConv`.
+
 ## Visualize Learning Trajectory
 
-We show how to visualize the trajectory of the output embeddings during training to qualitatively evaluate how the models learn to classify the data (this type of visualization/representation is not specific to GNNs.)
+I'm visualize the trajectory of the output embeddings during training to qualitatively evaluate how the models learn to classify the data (this type of visualization/representation is not specific to GNNs.)
 
 ![GNN Embeddings](img/trajectories.gif "Trajectory of GNN 2d node embeddings during training")
 
@@ -42,9 +42,7 @@ For this class-balanced four-way classification dataset, this looks like separat
 
 ### In what order did the model learn to factor the data during training? 
 
-We sometimes observe by looking at this trajectory plot that the model first factors the data into two sets, and then subsequently learns to split each of the two sets again into two, in order to arrive at the four classes of the classification problem (e.g. it first learned to separate the data into {lowest & low}, {highest & high} before learning how to separate the data into {lowest}, {low}, {high}, and {highest})
-
-This ordering can give us more or less confidence in the learned representations - we can investigate if the observed data factoring is natural or spurious.
+Using this trajectory plot, I can see on some training runs that the model first factors the data into two sets, and then subsequently learns to split each of the two sets again into two, in order to arrive at the four classes of the classification problem (e.g. it first learned to separate the data into {lowest & low}, {highest & high} before learning how to separate the data into {lowest}, {low}, {high}, and {highest})
 
 This way of thinking about the trajectory of feature learning dynamics was inspired by the [Toy Models of Superposition paper by Anthropic](https://transformer-circuits.pub/2022/toy_model/index.html#learning)
 
@@ -69,4 +67,3 @@ conda activate gnn_env
 pip install -r requirements.txt
 pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.12.0+cpu.html
 ```
-
