@@ -38,7 +38,7 @@ A trajectory plot like this can be useful to visualize how the model learned to 
 
 ### Did the model learn to spatially arrange the classes for easy separability? 
 
-For this class-balanced four-way classification dataset, this looks like separating the four colors cleanly into the four corners of the 2d output embedding space. (By the way, a visually intuitive takeaway from this kind of plot is that the ideal output embedding should scale logarithmically as the number of classification dimensions increases)
+For this class-balanced four-way classification dataset, this looks like separating the four colors cleanly into the four corners of the 2d output embedding space. (By the way, a visually intuitive takeaway from this kind of plot is that the natural representation dimension should scale logarithmically as the number of classification dimensions increases)
 
 ### In what order did the model learn to factor the data during training? 
 
