@@ -30,11 +30,11 @@ I tested two different types of convolution layers available as PyTorch Geometri
 
 ## Visualize Learning Trajectory
 
-I'm visualize the trajectory of the output embeddings during training to qualitatively evaluate how the models learn to classify the data (this type of visualization/representation is not specific to GNNs.)
+In this gif I'm visualizing the trajectory of the GNN's 2d output embeddings during training. I'm trying to qualitatively evaluate how the models learn to classify the data (this type of visualization/representation is not specific to GNNs.)
 
 ![GNN Embeddings](img/trajectories.gif "Trajectory of GNN 2d node embeddings during training")
 
-A trajectory plot like this can be useful to visualize how the model learned to "factor" the data for the classification task at hand, helping us answer the following questions: 
+A trajectory plot like this can be useful to visualize how the model learned to "factor" the data for the classification task at hand, helping answer the following questions: 
 
 ### Did the model learn to spatially arrange the classes for easy separability? 
 
