@@ -14,7 +14,7 @@ The only data available as a predictor is the graph of airport connectivity - th
 
 Each airport is given the label 0, 1, 2, or 3, representing its activity level (label 0 is highest activity, label 3 is lowest activity).
 
-To evaluate against a comparable baseline model (random guessing would get 25% accuracy), I trained a logistic regression classifier to predict the label for each node using each node's # of neighbors as the only feature (the # of neighbors of an airport is the number of airports one direct flight away). I can only get around 50% accuracy with this baseline since there are plenty of airports that deviate from the general trend of more connected airports, more passenger activity.
+To evaluate against a comparable baseline model (random guessing would get 25% accuracy), I trained a logistic regression classifier to predict the label for each airport using the airports's # of connected airports (the # of connected airports is the number of airports one direct flight away). I can only get around 50% accuracy with this baseline since there are plenty of airports that deviate from the general trend of more connected airports, more passenger activity.
 
 ![Logistic Regression baseline](img/logreg.png "Logistic Regression baseline")
 
