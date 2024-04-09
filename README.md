@@ -8,9 +8,11 @@ Graphs like the map of US airports encode which nodes (airports) are connected t
 
 ![Airports dataset](img/airports.png "Airports dataset")
 
-The goal for this dataset is to be able to predict how busy and active each airport is, as measured by # of passengers passing through the airport each year. The only data available as a predictor is the graph of airport connectivity - that is, a matrix of 0s and 1s with a 1 indicating there is an available flight between airports. 
+The goal for this dataset is to be able to predict how busy and active each airport is, as measured by # of passengers passing through the airport each year (This is therefore a *node classification* task, as opposed to other types of graph modeling tasks like edge classificaiton or full-graph classification). 
 
-Each airport is given the label 0, 1, 2, or 3, representing its activity level (label 0 is highest activity, label 3 is lowest activity). The goal is to correct the label of each node correctly. This is therefore a *node classification* task, as opposed to other types of graph modeling tasks (like edge classificaiton or full-graph classification).
+The only data available as a predictor is the graph of airport connectivity - that is, a matrix of 0s and 1s with a 1 indicating there is an available flight between airports. 
+
+Each airport is given the label 0, 1, 2, or 3, representing its activity level (label 0 is highest activity, label 3 is lowest activity).
 
 To evaluate against a baseline model, we train a logistic regression classifier to predict the label for each node using each node's # of neighbors as the only feature (the # of neighbors of an airport is the number of airports one direct flight away). We can only get around 50% accuracy with this baseline since there are plenty of airports that deviate from the general trend of more connected airports, more passengers.
 
